@@ -23,8 +23,17 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
   },
-
+  muitoolbar: {
+    background:  'url("/images/pathway.jpg")',
+    backgroundSize: '100%',
+    height: '150px',
+    minWidth: '975px',
+    backgroundRepeat: 'no-repeat'
+  },
   menuButton: {
+    backgroundColor: 'white',
+    height: '45px',
+    borderRadius: '25px',
     marginLeft: 12,
     marginRight: 20,
   },
@@ -95,17 +104,17 @@ class Nav extends React.Component {
 
     // if (this.props.user.userName) {
     const drawer = (
-      <Drawer
+      <Drawer 
         variant="persistent"
         anchor={anchor}
         open={open}
         classes={{
-          paper: classes.drawerPaper,
+        paper: classes.drawerPaper,
         }}
       >
         <div>
-          <IconButton onClick={this.handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+          <IconButton onClick={this.handleDrawerClose} >
+            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon /> }
           </IconButton>
           <div id="welcome" >
             Welcome, {this.props.user.userName}!
@@ -160,8 +169,8 @@ class Nav extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Toolbar disableGutters={!open}>
-          <IconButton
+        <Toolbar className={classes.muitoolbar} disableGutters={!open}>
+          <IconButton 
             color="inherit"
             aria-label="open drawer"
             onClick={this.handleDrawerOpen}
@@ -173,7 +182,7 @@ class Nav extends React.Component {
           </Typography>
         </Toolbar>
         {before}
-        <main
+        <main 
           className={classNames(classes.content, classes[`content-${anchor}`], {
             [classes.contentShift]: open,
             [classes[`contentShift-${anchor}`]]: open,
